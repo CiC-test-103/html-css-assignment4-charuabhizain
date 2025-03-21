@@ -1,53 +1,268 @@
-/** Variable Imports **/
 @import './variables.css';
 
-/**
-  CSS Reset
-  Source: https://www.joshwcomeau.com/css/custom-css-reset/
-**/
-/* 1. Use a more-intuitive box-sizing model */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
-/* 2. Remove default margin */
 * {
   margin: 0;
+  padding: 0;
 }
 body {
-  /* 3. Add accessible line-height */
   line-height: 1.5;
-  /* 4. Improve text rendering */
   -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  font-family: var(--fs-base);
+  gap: 4rem;
 }
-/* 5. Improve media defaults */
-img, picture, video, canvas, svg {
+.flex-row {
+}
+.flex-col {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+img,
+picture,
+video,
+canvas,
+svg {
   display: block;
   max-width: 100%;
 }
-/* 6. Inherit fonts for form controls */
-input, button, textarea, select {
+input,
+button,
+textarea,
+select {
   font: inherit;
 }
-/* 7. Avoid text overflows */
-p, h1, h2, h3, h4, h5, h6 {
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   overflow-wrap: break-word;
 }
-/* 8. Improve line wrapping */
 p {
   text-wrap: pretty;
 }
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   text-wrap: balance;
 }
-/*
-  9. Create a root stacking context
-*/
-#root, #__next {
+#root,
+#__next {
   isolation: isolate;
 }
 
-/** Your CSS Below **/
+.container {
+  width: 100%;
+  max-width: 375px;
+  background: rgba(255, 255, 255, 1);
+  box-shadow: 0px 30px 60px 0px rgba(61, 108, 236, 0.15);
+}
 
-/** Attribution CSS **/
-.attribution { font-size: 11px; text-align: center; }
-.attribution a { color: hsl(228, 45%, 44%); }
+.result-container {
+  background: linear-gradient(180deg, #7755ff 0%, #6943ff 0.01%, #2f2ce9 100%);
+  border-radius: 0 0 2rem 2rem;
+  gap: 2rem;
+  padding: 2rem;
+}
+
+.result-title,
+.summary-title {
+  font-weight: var(--fw-bold);
+  font-size: var(--font-paragraph);
+}
+
+.summary-title {
+  color: var(--clr-darkGrayBlue);
+}
+
+.result-title {
+  color: var(--clr-lightLavender);
+}
+
+.score-container {
+  width: 8.75rem;
+  height: 8.75rem;
+  border-radius: 50%;
+  background: linear-gradient(
+    180deg,
+    var(--gra-violetBlue) 0%,
+    var(--gra-persianBlue) 100%
+  );
+}
+.score {
+  font-weight: var(--fw-black);
+  font-size: var(--font-title);
+  color: var(--clr-white);
+  line-height: 4rem;
+}
+
+.total {
+  font-weight: var(--fw-bold);
+  font-size: 1rem;
+  color: var(--clr-lightLavender);
+}
+
+.feedback {
+  font-size: 24px;
+  font-weight: var(--fw-bold);
+  color: var(--clr-white);
+}
+
+.remarks {
+  font-weight: var(--fw-regular);
+  color: var(--clr-lightLavender);
+  max-width: 16.25rem;
+}
+
+.summary-container {
+  padding: 1.5625rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  background: hsla(0, 0%, 100%, 1);
+}
+
+.summary-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.summary-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 1rem;
+  align-items: center;
+  border-radius: 12px;
+  font-size: 1.125rem;
+}
+
+.summary-text {
+  font-weight: var(--fw-regular);
+}
+
+.summary-category {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+.summary-score {
+  font-weight: 700;
+  font-size: 18px;
+  color: hsla(224, 30%, 27%, 1);
+}
+
+.summary-score span {
+  opacity: 50%;
+}
+.reaction {
+  background: color-mix(in srgb, var(--clr-lightRed) 10%, var(--clr-white));
+}
+
+.reaction-text {
+  color: var(--clr-lightRed);
+}
+
+.memory {
+  background: hsla(39, 100%, 56%, 0.1);
+}
+
+.memory-text {
+  color: var(--clr-orangeYellow);
+}
+
+.verbal {
+  background: hsla(166, 100%, 37%, 0.1);
+}
+
+.verbal-text {
+  color: var(--clr-greenTeal);
+}
+
+.visual {
+  background: hsla(234, 85%, 45%, 0.1);
+}
+
+.visual-text {
+  color: var(--clr-cobaltBlue);
+}
+
+.btn {
+  border: none;
+  width: 100%;
+  border-radius: 8rem;
+  background-color: var(--clr-darkGrayBlue);
+  padding: 1rem;
+  font-size: var(--font-paragraph);
+  color: var(--clr-white);
+  font-weight: var(--fw-bold);
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.btn:hover {
+  background: linear-gradient(180deg, #7755ff 0%, #6943ff 0.01%, #2f2ce9 100%);
+}
+
+@media (min-width: 768px) {
+  .container {
+    border-radius: 2rem;
+    box-shadow: 0px 30px 60px 0px hsla(224, 82%, 58%, 0.15);
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-width: 768px;
+  }
+
+  .summary-container {
+    padding: 2rem;
+  }
+
+  .result-title,
+  .summary-title {
+    font-size: 1.5rem;
+  }
+
+  .score-container {
+    height: 200px;
+    width: 200px;
+  }
+
+  .score {
+    font-size: 4.5rem;
+    line-height: 5rem;
+  }
+  .total {
+    font-size: 1.125rem;
+  }
+  .feedback {
+    font-size: 32px;
+  }
+  .remarks {
+    font-size: 1.125rem;
+    text-align: center;
+  }
+}
+
+.attribution {
+  font-size: 11px;
+  text-align: center;
+}
+.attribution a {
+  color: hsl(228, 45%, 44%);
+}
